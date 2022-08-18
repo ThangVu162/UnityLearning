@@ -23,8 +23,17 @@ public class Driver : MonoBehaviour
         transform.Translate(0.0f, moveAmount, 0.0f);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        moveSpeed = slowSpeed;
+        Debug.Log("Slow");
+    }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (true) ;
+        if (collision.tag == "Boost")
+        {
+            moveSpeed = boostSpeed;
+            Debug.Log("Boost");
+        }
     }
 }
